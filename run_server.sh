@@ -74,7 +74,8 @@ init_config() {
     ns-slapd -D $BASEDIR && sleep 5  
     ldapadd -x -D"$ROOT_DN" -w${DIR_MANAGER_PASSWORD} -f /init-users.ldif &&
     ldapmodify -x -D"$ROOT_DN" -w${DIR_MANAGER_PASSWORD} -f /init-ssl.ldif &&
-    /bin/rm -f /init-users.ldif /init-ssl.ldif 
+    ldapmodify -x -D"$ROOT_DN" -w${DIR_MANAGER_PASSWORD} -f /enableMemberOf.ldif &&
+    /bin/rm -f /init-users.ldif /init-ssl.ldif /enableMemberOf.ldif
     pkill -f ns-slapd  && sleep 5
 }
 

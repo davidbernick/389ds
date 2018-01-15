@@ -15,6 +15,7 @@ RUN curl -qL https://github.com/kelseyhightower/confd/releases/download/v0.11.0/
     chmod +x /confd
 
 COPY init-ssl.ldif          /init-ssl.ldif
+COPY enableMemberOf.ldif /enableMemberOf.ldif
 COPY confd                  /etc/confd
 
 VOLUME ["/etc/dirsrv", "/var/lib/dirsrv", "/var/log/dirsrv", "/certs"]
